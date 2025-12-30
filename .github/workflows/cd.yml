@@ -51,7 +51,8 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: flutter build ipa --release --no-codesign
+      - run: flutter build ipa --no-codesign
+      # - run: flutter build ipa --release --no-codesign
       # - run: flutter build ios --no-codesign
       - name: Show build outputs
         run: |
