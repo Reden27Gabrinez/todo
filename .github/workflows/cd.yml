@@ -53,8 +53,14 @@ jobs:
       - run: flutter pub get
       - run: flutter build ipa --release --no-codesign
       # - run: flutter build ios --no-codesign
+      - name: Show build outputs
+        run: |
+          echo "Listing build/ios/ipa directory"
+          ls -la build/ios/ipa || true
+          echo "Searching for any *.ipa in build/"
+          find build -type f -name '*.ipa' -print || true
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
           name: app-release.ipa
-          path: build/ios/ipa/Runner.ipa
+          path: build/ios/ipa/**/*.ipa
